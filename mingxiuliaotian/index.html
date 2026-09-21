@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="明秀聊天室官网 - 提供安全、纯净的即时网络聊天服务。支持文字、语音、图片发送，拥有独特的兴趣房间、匿名聊天和实时状态功能，打造最舒适的在线交流平台。">
+    <meta name="keywords" content="明秀聊天室, 网络聊天室, 在线交友, 匿名聊天, 兴趣社区">
+    <title>明秀聊天室 - 纯净即时聊天与兴趣社区平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --primary-hover: #5649c0;
+            --secondary-color: #a29bfe;
+            --bg-color: #f9f9fc;
+            --card-bg: #ffffff;
+            --text-main: #2d3436;
+            --text-sub: #636e72;
+            --border-radius: 12px;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-md: 0 8px 24px rgba(108, 92, 231, 0.12);
+            --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; outline: none; }
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.2s; }
+        ul { list-style: none; }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo span { color: var(--text-main); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { font-weight: 500; color: var(--text-sub); font-size: 15px; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary-color); }
+        .btn-login {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .btn-login:hover { background-color: var(--primary-hover); transform: translateY(-1px); }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(108, 92, 231, 0.1) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            background: linear-gradient(120deg, var(--primary-color), #a29bfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+        .hero p {
+            font-size: 18px;
+            color: var(--text-sub);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-group { display: flex; gap: 15px; justify-content: center; }
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+        }
+        .btn-secondary {
+            background-color: white;
+            color: var(--text-main);
+            padding: 12px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            border: 1px solid #eee;
+        }
+        .btn-secondary:hover { border-color: var(--primary-color); color: var(--primary-color); }
+
+        /* Features Grid */
+        .section { padding: 60px 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-title h2 { font-size: 32px; margin-bottom: 10px; }
+        .section-title p { color: var(--text-sub); }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .feature-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(108, 92, 231, 0.1);
+        }
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(108, 92, 231, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-size: 24px;
+        }
+        .feature-card h3 { font-size: 20px; margin-bottom: 10px; }
+        .feature-card p { color: var(--text-sub); font-size: 14px; }
+
+        /* Rooms Section */
+        .rooms-section { background-color: white; }
+        .room-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .room-card {
+            background: var(--bg-color);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .room-card:hover { background: white; box-shadow: var(--shadow-sm); }
+        .room-card .tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 10px;
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--text-sub);
+        }
+        .room-avatar {
+            width: 60px;
+            height: 60px;
+            background: #ddd;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            background-size: cover;
+            background-position: center;
+        }
+        .room-card h4 { font-size: 16px; margin-bottom: 5px; }
+        .room-card p { font-size: 12px; color: var(--text-sub); }
+        .online-count { color: #00b894; font-size: 12px; font-weight: 600; margin-top: 5px; display: block; }
+
+        /* Safety & Usage */
+        .safety-section { background: linear-gradient(135deg, #2d3436 0%, #636e72 100%); color: white; }
+        .safety-section .section-title h2 { color: white; }
+        .safety-section .section-title p { color: rgba(255,255,255,0.7); }
+        .safety-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .safety-list li {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .safety-list .check-icon {
+            background: rgba(255,255,255,0.2);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        .safety-list h4 { font-size: 18px; margin-bottom: 5px; }
+        .safety-list p { color: rgba(255,255,255,0.8); font-size: 14px; }
+
+        /* Footer */
+        footer {
+            background: white;
+            padding: 60px 20px 20px;
+            border-top: 1px solid #eee;
+        }
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-brand h3 { font-size: 22px; color: var(--primary-color); margin-bottom: 15px; }
+        .footer-brand p { color: var(--text-sub); font-size: 14px; max-width: 300px; }
+        .footer-col h4 { font-size: 16px; margin-bottom: 20px; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: var(--text-sub); font-size: 14px; }
+        .footer-col ul li a:hover { color: var(--primary-color); }
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #b2bec3;
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .nav-links { display: none; } /* Simplified for mobile */
+            .safety-content { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            .cta-group { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                <span>明秀聊天室</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#" class="active">首页</a>
+                <a href="#rooms">兴趣房间</a>
+                <a href="#features">功能特色</a>
+                <a href="#safety">安全规范</a>
+            </nav>
+            <a href="#" class="btn-login">立即登录</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>发现志同道合的伙伴</h1>
+                <p>明秀聊天室是一个基于兴趣的即时交流社区。在这里，你可以加入不同话题的房间，与陌生人进行文字、语音或图片互动，分享生活中的点滴。</p>
+                <div class="cta-group">
+                    <a href="#" class="btn-primary">开始聊天</a>
+                    <a href="#rooms" class="btn-secondary">浏览房间</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>为什么选择明秀聊天室</h2>
+                    <p>我们致力于提供最流畅、最纯粹的社交体验</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">💬</div>
+                        <h3>实时文字互动</h3>
+                        <p>低延迟的消息传输系统，支持表情包和自定义发送，让沟通更加生动有趣。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎤</div>
+                        <h3>语音房间</h3>
+                        <p>创建或加入语音频道，随时随地与多人畅聊，无需打字也能轻松交流。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>隐私保护</h3>
+                        <p>支持匿名聊天模式，保护用户隐私安全，营造真实、放松的交流环境。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>兴趣匹配</h3>
+                        <p>根据你的兴趣标签推荐合适的房间，快速找到聊得来的朋友，拒绝无效社交。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rooms Section -->
+        <section id="rooms" class="section rooms-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>热门兴趣房间</h2>
+                    <p>探索当下最热门的聊天话题</p>
+                </div>
+                <div class="room-grid">
+                    <div class="room-card">
+                        <span class="tag">热门</span>
+                        <div class="room-avatar" style="background-image: url('https://picsum.photos/seed/music/100/100');"></div>
+                        <h4>音乐分享会</h4>
+                        <p>分享你喜欢的歌曲</p>
+                        <span class="online-count">1,204 在线</span>
+                    </div>
+                    <div class="room-card">
+                        <div class="room-avatar" style="background-image: url('https://picsum.photos/seed/game/100/100');"></div>
+                        <h4>游戏开黑</h4>
+                        <p>寻找队友一起上分</p>
+                        <span class="online-count">856 在线</span>
+                    </div>
+                    <div class="room-card">
+                        <span class="tag">夜聊</span>
+                        <div class="room-avatar" style="background-image: url('https://picsum.photos/seed/lit/100/100');"></div>
+                        <h4>深夜树洞</h4>
+                        <p>倾诉心事的地方</p>
+                        <span class="online-count">432 在线</span>
+                    </div>
+                    <div class="room-card">
+                        <span class="tag">新</span>
+                        <div class="room-avatar" style="background-image: url('https://picsum.photos/seed/movie/100/100');"></div>
+                        <h4>影视讨论组</h4>
+                        <p>最新电影影评</p>
+                        <span class="online-count">678 在线</span>
+                    </div>
+                    <div class="room-card">
+                        <div class="room-avatar" style="background-image: url('https://picsum.photos/seed/sport/100/100');"></div>
+                        <h4>运动健身</h4>
+                        <p>打卡健身日常</p>
+                        <span class="online-count">321 在线</span>
+                    </div>
+                    <div class="room-card">
+                        <span class="tag">宠物</span>
+                        <div class="room-avatar" style="background-image: url('https://picsum.photos/seed/cat/100/100');"></div>
+                        <h4>萌宠乐园</h4>
+                        <p>晒出你的爱宠</p>
+                        <span class="online-count">945 在线</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Safety Section -->
+        <section id="safety" class="section safety-section">
+            <div class="container">
+                <div class="safety-content">
+                    <div>
+                        <div class="section-title" style="text-align: left; margin-bottom: 30px;">
+                            <h2>安全与文明规范</h2>
+                            <p style="color: rgba(255,255,255,0.7);">我们致力于打造绿色健康的网络环境</p>
+                        </div>
+                        <ul class="safety-list">
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <div>
+                                    <h4>禁止不良信息</h4>
+                                    <p>严禁发布色情、暴力、赌博或任何违法信息，违者将被封禁账号。</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <div>
+                                    <h4>保护个人隐私</h4>
+                                    <p>请勿随意透露身份证号、家庭住址等敏感隐私信息，谨防网络诈骗。</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="check-icon">✓</div>
+                                <div>
+                                    <h4>理性文明交流</h4>
+                                    <p>尊重他人观点，禁止人身攻击、辱骂或恶意骚扰其他用户。</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="https://picsum.photos/seed/peace/500/350" alt="安全交流环境" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>明秀聊天室</h3>
+                <p>专注于提供简单、纯粹、有趣的在线即时聊天服务，让每一次交流都充满温度。</p>
+            </div>
+            <div class="footer-col">
+                <h4>产品</h4>
+                <ul>
+                    <li><a href="#">功能介绍</a></li>
+                    <li><a href="#">房间列表</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>帮助</h4>
+                <ul>
+                    <li><a href="#">使用指南</a></li>
+                    <li><a href="#">常见问题</a></li>
+                    <li><a href="#">联系客服</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>关于</h4>
+                <ul>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">用户协议</a></li>
+                    <li><a href="#">加入我们</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 明秀聊天室 版权所有. 本网站仅供演示使用。</p>
+        </div>
+    </footer>
+
+</body>
+</html>
