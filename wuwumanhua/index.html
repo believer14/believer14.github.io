@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="污污漫画-海量在线阅读全本漫画，涵盖BL、GL、后宫、恋爱、校园等热门题材，高清无码更新，畅享极致视觉体验。">
+    <meta name="keywords" content="污污漫画,在线漫画,全本漫画,BL漫画,GL漫画,后宫漫画,最新漫画">
+    <title>污污漫画-全本免费在线阅读与漫画推荐平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff4757;
+            --primary-hover: #ff6b81;
+            --bg-color: #f1f2f6;
+            --card-bg: #ffffff;
+            --text-main: #2f3542;
+            --text-sub: #747d8c;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --nav-height: 60px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-top: var(--nav-height);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header & Nav */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            padding: 8px 15px;
+            border: 1px solid #dfe4ea;
+            border-radius: 20px;
+            outline: none;
+            font-size: 14px;
+            width: 200px;
+            transition: width 0.3s, border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary-color);
+            width: 240px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #2d3436;
+        }
+
+        .hero p {
+            color: #636e72;
+            max-width: 600px;
+            margin: 0 auto 25px;
+        }
+
+        .hero-tags span {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            margin: 0 5px 10px;
+            color: #2d3436;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        /* Section Headers */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eccc68;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .section-more {
+            font-size: 13px;
+            color: var(--text-sub);
+            text-decoration: underline;
+        }
+
+        /* Grid Layouts */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        /* Card Styles */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            background-color: #dfe4ea;
+        }
+
+        .card-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-meta {
+            font-size: 12px;
+            color: var(--text-sub);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card-meta .status {
+            color: #00b894;
+        }
+
+        /* Ranking List */
+        .ranking-list {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 20px;
+        }
+
+        .rank-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f2f6;
+        }
+
+        .rank-item:last-child {
+            border-bottom: none;
+        }
+
+        .rank-num {
+            font-size: 18px;
+            font-weight: 800;
+            color: #dfe4ea;
+            width: 30px;
+            text-align: center;
+        }
+
+        .rank-item:nth-child(1) .rank-num { color: #ff4757; }
+        .rank-item:nth-child(2) .rank-num { color: #ffa502; }
+        .rank-item:nth-child(3) .rank-num { color: #ff7f50; }
+
+        .rank-img {
+            width: 60px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 15px;
+        }
+
+        .rank-info {
+            flex: 1;
+        }
+
+        .rank-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .rank-stats {
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+
+        /* Footer */
+        footer {
+            background: #2f3542;
+            color: #a4b0be;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            margin: 0 10px;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .copyright {
+            font-size: 12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .grid-4 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .grid-4, .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .ranking-list .rank-img {
+                width: 50px;
+                height: 70px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid-4, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-box input {
+                width: 140px;
+            }
+            
+            .search-box input:focus {
+                width: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">污污漫画</a>
+            <nav class="nav-links">
+                <a href="#">首页</a>
+                <a href="#">最新更新</a>
+                <a href="#">热门排行</a>
+                <a href="#">分类大全</a>
+                <a href="#">全本完结</a>
+            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="搜索漫画名称...">
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>探索极致的二次元世界</h1>
+            <p>汇聚全网最热门的BL、GL、后宫及恋爱题材漫画，高清无码，全本免费，为您带来最极致的阅读体验。</p>
+            <div class="hero-tags">
+                <span>🔥 热门推荐</span>
+                <span>⚡ 每日更新</span>
+                <span>💎 高清画质</span>
+                <span>🚀 极速加载</span>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- Latest Updates -->
+            <section>
+                <div class="section-header">
+                    <h2 class="section-title">最新更新</h2>
+                    <a href="#" class="section-more">查看更多 &gt;</a>
+                </div>
+                <div class="grid-4">
+                    <article class="card">
+                        <div class="card-tag">BL</div>
+                        <img src="https://picsum.photos/seed/comic1/300/400" alt="漫画封面" class="card-img">
+                        <div class="card-body">
+                            <h3 class="card-title">校霸的掌心宠</h3>
+                            <div class="card-meta">
+                                <span class="status">连载中</span>
+                                <span>今日 12:30</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-tag">GL</div>
+                        <img src="https://picsum.photos/seed/comic2/300/400" alt="漫画封面" class="card-img">
+                        <div class="card-body">
+                            <h3 class="card-title">学姐的秘密花园</h3>
+                            <div class="card-meta">
+                                <span class="status">连载中</span>
+                                <span>今日 11:15</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-tag">校园</div>
+                        <img src="https://picsum.photos/seed/comic3/300/400" alt="漫画封面" class="card-img">
+                        <div class="card-body">
+                            <h3 class="card-title">转生成为恶役千金</h3>
+                            <div class="card-meta">
+                                <span class="status">连载中</span>
+                                <span>今日 10:00</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-tag">后宫</div>
+                        <img src="https://picsum.photos/seed/comic4/300/400" alt="漫画封面" class="card-img">
+                        <div class="card-body">
+                            <h3 class="card-title">我的后宫游戏通关了</h3>
+                            <div class="card-meta">
+                                <span class="status">连载中</span>
+                                <span>今日 09:45</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Ranking Section -->
+            <section style="margin-top: 50px;">
+                <div class="section-header">
+                    <h2 class="section-title">本周热门排行</h2>
+                    <a href="#" class="section-more">查看榜单 &gt;</a>
+                </div>
+                <div class="ranking-list">
+                    <div class="rank-item">
+                        <span class="rank-num">1</span>
+                        <img src="https://picsum.photos/seed/rank1/100/150" alt="封面" class="rank-img">
+                        <div class="rank-info">
+                            <h3 class="rank-title">不得不爱：强制爱</h3>
+                            <div class="rank-stats">热度 98.5万 | 收藏 12万</div>
+                        </div>
+                    </div>
+                    <div class="rank-item">
+                        <span class="rank-num">2</span>
+                        <img src="https://picsum.photos/seed/rank2/100/150" alt="封面" class="rank-img">
+                        <div class="rank-info">
+                            <h3 class="rank-title">禁忌之恋：豪门恩怨</h3>
+                            <div class="rank-stats">热度 95.2万 | 收藏 11.8万</div>
+                        </div>
+                    </div>
+                    <div class="rank-item">
+                        <span class="rank-num">3</span>
+                        <img src="https://picsum.photos/seed/rank3/100/150" alt="封面" class="rank-img">
+                        <div class="rank-info">
+                            <h3 class="rank-title">双面娇妻：总裁的掌中宝</h3>
+                            <div class="rank-stats">热度 92.1万 | 收藏 10.5万</div>
+                        </div>
+                    </div>
+                    <div class="rank-item">
+                        <span class="rank-num">4</span>
+                        <img src="https://picsum.photos/seed/rank4/100/150" alt="封面" class="rank-img">
+                        <div class="rank-info">
+                            <h3 class="rank-title">男友是只大狼狗</h3>
+                            <div class="rank-stats">热度 88.9万 | 收藏 9.2万</div>
+                        </div>
+                    </div>
+                    <div class="rank-item">
+                        <span class="rank-num">5</span>
+                        <img src="https://picsum.photos/seed/rank5/100/150" alt="封面" class="rank-img">
+                        <div class="rank-info">
+                            <h3 class="rank-title">恋爱养成：从今天开始</h3>
+                            <div class="rank-stats">热度 85.6万 | 收藏 8.9万</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Categories & Recommendations -->
+            <section style="margin-top: 50px;">
+                <div class="section-header">
+                    <h2 class="section-title">分类推荐</h2>
+                    <a href="#" class="section-more">浏览所有 &gt;</a>
+                </div>
+                <div class="grid-3">
+                    <article class="card">
+                        <div class="card-tag" style="background:#ff6b81">BL</div>
+                        <img src="https://picsum.photos/seed/cat1/400/250" alt="BL漫画" class="card-img" style="height:200px;">
+                        <div class="card-body">
+                            <h3 class="card-title">耽美纯爱专区</h3>
+                            <p style="font-size:13px; color:#747d8c; margin-top:5px;">收录各类纯爱、强制爱、师生恋等热门题材。</p>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-tag" style="background:#2ed573">GL</div>
+                        <img src="https://picsum.photos/seed/cat2/400/250" alt="GL漫画" class="card-img" style="height:200px;">
+                        <div class="card-body">
+                            <h3 class="card-title">百合少女专区</h3>
+                            <p style="font-size:13px; color:#747d8c; margin-top:5px;">精彩纷呈的百合作品，甜宠与虐恋并存。</p>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-tag" style="background:#1e90ff">校园</div>
+                        <img src="https://picsum.photos/seed/cat3/400/250" alt="校园漫画" class="card-img" style="height:200px;">
+                        <div class="card-body">
+                            <h3 class="card-title">青春校园专区</h3>
+                            <p style="font-size:13px; color:#747d8c; margin-top:5px;">初恋、考试、社团，重温青涩校园时光。</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">关于我们</a>
+            <a href="#">免责声明</a>
+            <a href="#">版权声明</a>
+            <a href="#">联系合作</a>
+            <a href="#">意见反馈</a>
+        </div>
+        <p class="copyright">
+            Copyright © 2023 污污漫画 All Rights Reserved.<br>
+            本站所有漫画资源均来自互联网，仅供学习交流，请勿用于商业用途。
+        </p>
+    </footer>
+
+</body>
+</html>
