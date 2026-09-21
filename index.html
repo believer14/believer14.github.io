@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一恐怖组织-全球地下势力情报与历史档案库</title>
+    <meta name="description" content="第一恐怖组织数据库：汇集全球地下势力、极端组织历史演变、组织架构、核心成员及行动记录。提供深度情报分析、历史回顾与安全警示指南。">
+    <meta name="keywords" content="第一恐怖组织,地下势力,极端组织,恐怖主义,国际安全,地下情报">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --bg-color: #0a0b0e;
+            --card-bg: #13141a;
+            --text-main: #e0e0e0;
+            --text-muted: #8b9bb4;
+            --accent-color: #8b0000;
+            --accent-hover: #b30000;
+            --border-color: #2a2d3a;
+            --font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 60px 0;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(10, 11, 14, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-main);
+        }
+
+        .search-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .search-btn:hover {
+            border-color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(10, 11, 14, 0.7), rgba(10, 11, 14, 0.9)), 
+                        url('https://picsum.photos/seed/darkness/1920/1080') no-repeat center center/cover;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, var(--bg-color) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+            border: 1px solid var(--accent-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--text-main);
+            background-color: rgba(255,255,255,0.05);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Section Titles */
+        .section-header {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 15px;
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        /* Card Grid */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-color: #444;
+        }
+
+        .card-image {
+            height: 180px;
+            background-color: #2a2d3a;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0,0,0,0.8);
+            color: #fff;
+            padding: 4px 8px;
+            font-size: 0.75rem;
+            border-radius: 2px;
+            text-transform: uppercase;
+        }
+
+        .card-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #666;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+
+        .tag {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* History Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--border-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            right: -8px;
+            background-color: var(--bg-color);
+            border: 2px solid var(--accent-color);
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--card-bg);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--card-bg);
+        }
+
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--card-bg);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--card-bg) transparent transparent;
+        }
+
+        .right::after {
+            left: -8px;
+        }
+
+        .content-box {
+            padding: 20px 30px;
+            background-color: var(--card-bg);
+            position: relative;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .content-box h3 {
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .content-box p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Warning Section */
+        .warning-section {
+            background: linear-gradient(135deg, #1a0505 0%, #0a0b0e 100%);
+            border: 1px solid #5a0000;
+            border-radius: 8px;
+            padding: 40px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .warning-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .warning-section h2 {
+            margin-bottom: 15px;
+            color: #ff4d4d;
+        }
+
+        .warning-section p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #050507;
+            border-top: 1px solid var(--border-color);
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            margin-top: 15px;
+            font-size: 0.9rem;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            color: var(--text-main);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #1a1d24;
+            color: #555;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+            }
+
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 21px;
+            }
+
+            .left::before, .right::before {
+                left: 60px;
+                border: medium solid var(--card-bg);
+                border-width: 10px 10px 10px 0;
+                border-color: transparent var(--card-bg) transparent transparent;
+            }
+
+            .right {
+                left: 0%;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand p {
+                margin: 15px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <span>◆</span> 第一恐怖组织
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">档案库</a></li>
+                    <li><a href="#history">历史演变</a></li>
+                    <li><a href="#warning">安全警示</a></li>
+                    <li><a href="#about">关于本站</a></li>
+                </ul>
+            </nav>
+            <button class="search-btn">搜索档案</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>揭秘全球地下势力<br>与极端组织档案</h1>
+                <p>深入解析第一恐怖组织的起源、运作模式及全球影响。为安全研究、历史学者及情报分析提供权威数据支持。</p>
+                <div>
+                    <a href="#archives" class="btn btn-primary">浏览档案</a>
+                    <a href="#warning" class="btn btn-outline">了解风险</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="container stats-grid">
+                <div class="stat-item">
+                    <h3>120+</h3>
+                    <p>历史组织案例</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>国家/地区分布</p>
+                </div>
+                <div class="stat-item">
+                    <h3>15k+</h3>
+                    <p>情报条目数据</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>安全监测网络</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Archives Section -->
+        <section id="archives" class="section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <h2>核心档案</h2>
+                        <p>精选全球最具影响力的地下势力与极端组织资料</p>
+                    </div>
+                    <a href="#" style="color: var(--accent-color); font-weight: 600;">查看全部 &rarr;</a>
+                </div>
+
+                <div class="grid-layout">
+                    <!-- Card 1 -->
+                    <article class="card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/terror1/400/250" alt="组织档案封面">
+                            <span class="card-badge">历史级</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">黑手党联盟</h3>
+                            <p class="card-desc">起源于19世纪西西里的地下黑帮组织，后演变为跨国犯罪集团，涉及毒品交易、洗钱及政治渗透。</p>
+                            <div class="card-meta">
+                                <span class="tag">犯罪组织</span>
+                                <span>起源: 19世纪</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/terror2/400/250" alt="组织档案封面">
+                            <span class="card-badge">活跃中</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">幽灵网络</h3>
+                            <p class="card-desc">活跃于暗网的极端意识形态团体，通过加密通讯组织跨国袭击，招募方式高度隐蔽。</p>
+                            <div class="card-meta">
+                                <span class="tag">极端组织</span>
+                                <span>活跃: 近5年</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/terror3/400/250" alt="组织档案封面">
+                            <span class="card-badge">已瓦解</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">旧日教团</h3>
+                            <p class="card-desc">曾引发多起极端暴力事件的宗教极端组织，虽已失去主要据点，但残余势力仍具威胁。</p>
+                            <div class="card-meta">
+                                <span class="tag">宗教极端</span>
+                                <span>状态: 残存</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 4 -->
+                    <article class="card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/terror4/400/250" alt="组织档案封面">
+                            <span class="card-badge">新兴势力</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">数字游击队</h3>
+                            <p class="card-desc">利用网络技术进行破坏和宣传的团体，其行动模式与传统武装恐怖组织截然不同。</p>
+                            <div class="card-meta">
+                                <span class="tag">网络恐怖</span>
+                                <span>类型: 网络战</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 5 -->
+                    <article class="card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/terror5/400/250" alt="组织档案封面">
+                            <span class="card-badge">跨国犯罪</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">太平洋走私联盟</h3>
+                            <p class="card-desc">控制主要海上走私路线的武装走私集团，资金实力雄厚，且与当地武装势力关系密切。</p>
+                            <div class="card-meta">
+                                <span class="tag">武装走私</span>
+                                <span>范围: 亚太</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 6 -->
+                    <article class="card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/terror6/400/250" alt="组织档案封面">
+                            <span class="card-badge">情报分析</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">雇佣兵工会</h3>
+                            <p class="card-desc">提供私人军事服务的地下组织，其成员遍布全球冲突地区，操作高度专业化。</p>
+                            <div class="card-meta">
+                                <span class="tag">私人武装</span>
+                                <span>性质: 雇佣</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Timeline Section -->
+        <section id="history" class="section-padding" style="background-color: #0d0e12;">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <h2>历史演变脉络</h2>
+                        <p>从地下秘密结社到现代极端网络的演进过程</p>
+                    </div>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item left">
+                        <div class="content-box">
+                            <h3>19世纪末：起源</h3>
+                            <p>早期的秘密结社与地下帮派开始形成，主要服务于政治庇护与非法贸易需求。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="content-box">
+                            <h3>20世纪初：扩张</h3>
+                            <p>随着工业革命与全球化进程，部分地下组织开始向跨国犯罪集团转型。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="content-box">
+                            <h3>20世纪末：意识形态化</h3>
+                            <p>极端意识形态介入地下世界，恐怖主义与有组织犯罪结合，形成新型威胁。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="content-box">
+                            <h3>21世纪：网络化</h3>
+                            <p>暗网与加密通讯技术的普及，使得全球地下势力形成了去中心化的网络结构。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Safety Warning Section -->
+        <section id="warning" class="container">
+            <div class="warning-section">
+                <span class="warning-icon">⚠</span>
+                <h2>安全警示与法律声明</h2>
+                <p>本站仅用于学术研究、历史回顾与情报分析目的。所有提供的组织信息均基于公开历史资料与公开情报报告。<br>严禁利用本站信息进行任何违法活动、现实世界的暴力行为或对他人造成伤害。</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <span>◆</span> 第一恐怖组织
+                    </a>
+                    <p>致力于提供客观、详实的地下势力情报与历史档案，为维护社会安全提供数据支持。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#">档案索引</a></li>
+                        <li><a href="#">历史时间线</a></li>
+                        <li><a href="#">术语解释</a></li>
+                        <li><a href="#">相关报告</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>分类浏览</h4>
+                    <ul>
+                        <li><a href="#">有组织犯罪</a></li>
+                        <li><a href="#">宗教极端组织</a></li>
+                        <li><a href="#">民族分离主义</a></li>
+                        <li><a href="#">网络恐怖主义</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">数据来源</a></li>
+                        <li><a href="#">联系编辑部</a></li>
+                        <li><a href="#">免责声明</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 第一恐怖组织数据库. All rights reserved. 本站内容仅供学习参考，不代表官方立场。
+            </div>
+        </div>
+    </footer>
+
+</body>
+          </html>
