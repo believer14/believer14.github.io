@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>uTools - 高效效率工具箱与插件扩展平台</title>
+    <meta name="description" content="uTools 是一款极简的效率工具箱，支持自定义插件扩展。一键唤起、全局搜索、快捷指令，提升 Windows、macOS 工作效率，让工具随需而用。">
+    <meta name="keywords" content="uTools, 效率工具, 插件, 快捷指令, 生产力工具, Windows工具, Mac工具">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0084ff;
+            --primary-hover: #0066cc;
+            --bg-color: #f5f7fa;
+            --card-bg: #ffffff;
+            --text-main: #1f2329;
+            --text-secondary: #5e6672;
+            --border-color: #e5e6eb;
+            --code-bg: #282c34;
+            --code-text: #abb2bf;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .flex-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        /* Header */
+        header {
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: 64px;
+        }
+
+        .header-inner {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary-color), #00d2ff);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+            font-size: 18px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 32px;
+        }
+
+        nav a {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 20px;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border-color: var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 132, 255, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(180deg, #fff 0%, var(--bg-color) 100%);
+            padding: 100px 0 80px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #1f2329 0%, #5e6672 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #eef4ff;
+            color: var(--primary-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .hero-visual {
+            margin-top: 60px;
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+
+        .terminal {
+            background: var(--code-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            font-family: 'Consolas', 'Monaco', monospace;
+        }
+
+        .terminal-header {
+            background: #21252b;
+            padding: 12px 16px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot.red { background: #ff5f56; }
+        .dot.yellow { background: #ffbd2e; }
+        .dot.green { background: #27c93f; }
+
+        .terminal-body {
+            padding: 24px;
+            color: var(--code-text);
+            font-size: 14px;
+        }
+
+        .cmd-line {
+            margin-bottom: 12px;
+            display: flex;
+        }
+
+        .prompt {
+            color: #61afef;
+            margin-right: 8px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 18px;
+            background: var(--code-text);
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* Features Grid */
+        .features {
+            background: var(--card-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+            font-size: 18px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            padding: 30px;
+            border-radius: var(--radius-lg);
+            background: var(--bg-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: var(--primary-color);
+            font-size: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        /* Plugin Showcase */
+        .plugins {
+            background: #f0f4f8;
+        }
+
+        .plugin-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .plugin-card {
+            background: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s;
+        }
+
+        .plugin-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .plugin-cover {
+            height: 140px;
+            background: linear-gradient(135deg, #e0f7fa 0%, #e1bee7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .plugin-info {
+            padding: 20px;
+        }
+
+        .plugin-name {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .plugin-cat {
+            font-size: 12px;
+            color: var(--text-secondary);
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .plugin-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 8px;
+            height: 40px;
+            overflow: hidden;
+        }
+
+        .plugin-footer {
+            padding: 12px 20px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .plugin-stats {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* Installation Steps */
+        .steps {
+            background: white;
+        }
+
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .step-num {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .step-content p {
+            color: var(--text-secondary);
+        }
+
+        /* FAQ Section */
+        .faq {
+            background: var(--bg-color);
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: var(--radius-md);
+            margin-bottom: 16px;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+        }
+
+        .faq-question {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            color: var(--text-secondary);
+            font-size: 15px;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1b1e;
+            color: #8f949e;
+            padding: 60px 0 30px;
+            font-size: 14px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 20px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #2c2e33;
+            padding-top: 30px;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            .header-inner nav {
+                display: none; /* Simplified for mobile */
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .header-actions .btn {
+                display: none;
+            }
+            .header-actions .btn-outline {
+                display: inline-flex;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <div class="logo-icon">u</div>
+                uTools
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#features" class="active">功能特点</a></li>
+                    <li><a href="#plugins">插件市场</a></li>
+                    <li><a href="#install">安装指南</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn btn-outline">登录</a>
+                <a href="#" class="btn btn-primary">下载客户端</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>让工具随需而用<br>一键唤起，效率倍增</h1>
+                <p>uTools 是一款极简的效率工具箱。它不仅仅是一个启动器，更是一个基于插件架构的扩展平台。通过安装您需要的插件，它将变成任何您想要的样子。</p>
+                <div class="hero-tags">
+                    <span class="tag">#全局搜索</span>
+                    <span class="tag">#快捷指令</span>
+                    <span class="tag">#剪贴板增强</span>
+                    <span class="tag">#跨平台</span>
+                </div>
+                <div style="display: flex; justify-content: center; gap: 16px;">
+                    <a href="#" class="btn btn-primary" style="padding: 12px 32px; font-size: 16px;">免费下载</a>
+                    <a href="#plugins" class="btn btn-outline" style="padding: 12px 32px; font-size: 16px;">浏览插件</a>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="dot red"></div>
+                            <div class="dot yellow"></div>
+                            <div class="dot green"></div>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="cmd-line">
+                                <span class="prompt">user@uTools:~$</span>
+                                <span>uTools install <span style="color:#e06c75">json-viewer</span></span>
+                                <span class="cursor"></span>
+                            </div>
+                            <div style="color:#98c379; margin-bottom: 12px;">✔ 正在解析插件源...</div>
+                            <div style="color:#61afef; margin-bottom: 12px;">✔ 插件 json-viewer 已安装成功</div>
+                            <div style="color:#abb2bf;">✔ 插件已添加到工具栏</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="section-padding features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>为什么选择 uTools</h2>
+                    <p>专为提升工作效率而设计的现代化工具平台</p>
+                </div>
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>一键唤起</h3>
+                        <p>无需打开软件，只需按下快捷键（默认 Ctrl+Alt+U），即可在所有窗口顶层唤起 uTools，让工作流无缝衔接。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🔌</div>
+                        <h3>插件扩展</h3>
+                        <p>内置插件市场，支持 JSON 格式插件。您可以安装各类工具，如 JSON 格式化、正则提取、二维码生成等，随需定制。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>智能过滤</h3>
+                        <p>输入关键词即可快速筛选工具和内容。支持模糊搜索和正则匹配，让海量数据瞬间触手可及。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">📋</div>
+                        <h3>剪贴板增强</h3>
+                        <p>自动记录剪贴板历史，支持文本、图片、文件等多种格式。一键粘贴，不再遗漏重要信息。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🔄</div>
+                        <h3>跨平台同步</h3>
+                        <p>登录账号后，您的工具栏配置、插件列表和剪贴板历史在 Windows、macOS 和 Linux 之间自动同步。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>安全隐私</h3>
+                        <p>所有数据仅在本地处理，不上传个人隐私信息。插件安装来源经过严格审核，确保系统安全。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Plugin Market Section -->
+        <section id="plugins" class="section-padding plugins">
+            <div class="container">
+                <div class="section-title">
+                    <h2>热门插件推荐</h2>
+                    <p>探索社区开发者贡献的强大工具，扩展您的生产力边界</p>
+                </div>
+                <div class="plugin-list">
+                    <!-- Plugin 1 -->
+                    <div class="plugin-card">
+                        <div class="plugin-cover">⚡</div>
+                        <div class="plugin-info">
+                            <div class="plugin-name">JSON Viewer <span class="plugin-cat">格式化</span></div>
+                            <p class="plugin-desc">美化显示 JSON 数据，支持格式化、压缩、高亮，是前后端开发者的必备工具。</p>
+                        </div>
+                        <div class="plugin-footer">
+                            <span class="plugin-stats">⭐ 12k+ 下载</span>
+                            <a href="#" class="btn-outline" style="padding: 4px 12px; font-size: 12px;">安装</a>
+                        </div>
+                    </div>
+                    <!-- Plugin 2 -->
+                    <div class="plugin-card">
+                        <div class="plugin-cover">🧩</div>
+                        <div class="plugin-info">
+                            <div class="plugin-name">Regex Extract <span class="plugin-cat">文本处理</span></div>
+                            <p class="plugin-desc">使用正则表达式从文本中快速提取所需信息，支持批量处理和结果导出。</p>
+                        </div>
+                        <div class="plugin-footer">
+                            <span class="plugin-stats">⭐ 8k+ 下载</span>
+                            <a href="#" class="btn-outline" style="padding: 4px 12px; font-size: 12px;">安装</a>
+                        </div>
+                    </div>
+                    <!-- Plugin 3 -->
+                    <div class="plugin-card">
+                        <div class="plugin-cover">🖼️</div>
+                        <div class="plugin-info">
+                            <div class="plugin-name">QR Code <span class="plugin-cat">实用工具</span></div>
+                            <p class="plugin-desc">快速生成二维码，支持扫描识别。支持自定义颜色和尺寸，方便分享链接。</p>
+                        </div>
+                        <div class="plugin-footer">
+                            <span class="plugin-stats">⭐ 6k+ 下载</span>
+                            <a href="#" class="btn-outline" style="padding: 4px 12px; font-size: 12px;">安装</a>
+                        </div>
+                    </div>
+                    <!-- Plugin 4 -->
+                    <div class="plugin-card">
+                        <div class="plugin-cover">💬</div>
+                        <div class="plugin-info">
+                            <div class="plugin-name">Clipboard History <span class="plugin-cat">剪贴板</span></div>
+                            <p class="plugin-desc">强大的剪贴板历史记录管理器，支持文本、图片、文件，防止重要内容丢失。</p>
+                        </div>
+                        <div class="plugin-footer">
+                            <span class="plugin-stats">⭐ 15k+ 下载</span>
+                            <a href="#" class="btn-outline" style="padding: 4px 12px; font-size: 12px;">安装</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Installation Section -->
+        <section id="install" class="section-padding steps">
+            <div class="container">
+                <div class="section-title">
+                    <h2>快速安装指南</h2>
+                    <p>几分钟内即可开始使用 uTools 提升效率</p>
+                </div>
+                <div class="steps-container">
+                    <div class="step-item">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <h3>下载客户端</h3>
+                            <p>访问官方网站或应用商店，下载适合您操作系统的 uTools 安装包（Windows, macOS, Linux）。安装程序体积小巧，运行迅速。</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <h3>注册并登录</h3>
+                            <p>安装完成后，打开 uTools。使用邮箱或第三方账号注册并登录。登录后即可开启跨设备同步功能。</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <h3>安装插件</h3>
+                            <p>按下 Ctrl+Alt+U 唤起工具箱，点击“插件市场”图标。在搜索框中输入您需要的工具名称，点击安装即可。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section-padding faq">
+            <div class="container" style="max-width: 800px;">
+                <div class="section-title">
+                    <h2>常见问题</h2>
+                </div>
+                
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        uTools 是免费的吗？
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        是的，uTools 基础功能完全免费，包括全局搜索、剪贴板历史和基础工具。部分高级插件可能需要付费或观看广告解锁。
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        如何卸载插件？
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        在 uTools 工具栏中，找到您想卸载的插件，右键点击选择“卸载”即可。您也可以在插件市场管理中批量管理已安装的插件。
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        支持哪些操作系统？
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        uTools 支持最新的 Windows 10/11、macOS (10.13+) 以及主流的 Linux 发行版。
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        快捷键冲突怎么办？
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        uTools 支持自定义快捷键。如果您发现默认的 Ctrl+Alt+U 与其他软件冲突，可以在设置中修改唤起快捷键。
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3><div class="logo-icon" style="width:24px; height:24px; font-size:14px;">u</div> uTools</h3>
+                    <p>让工具随需而用，打造属于你的效率工具箱。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>产品</h4>
+                    <ul>
+                        <li><a href="#">下载客户端</a></li>
+                        <li><a href="#">插件市场</a></li>
+                        <li><a href="#">更新日志</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>资源</h4>
+                    <ul>
+                        <li><a href="#">开发文档</a></li>
+                        <li><a href="#">社区论坛</a></li>
+                        <li><a href="#">设计规范</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>支持</h4>
+                    <ul>
+                        <li><a href="#">帮助中心</a></li>
+                        <li><a href="#">联系我们</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023-2024 uTools. All rights reserved. 仅供演示设计。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple FAQ Toggle Logic
+        function toggleFaq(element) {
+            element.classList.toggle('active');
+            const icon = element.querySelector('.faq-question span');
+            icon.textContent = element.classList.contains('active') ? '-' : '+';
+        }
+
+        // Smooth Scroll for Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+                      </html>
