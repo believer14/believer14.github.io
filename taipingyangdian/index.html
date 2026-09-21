@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="太平洋电脑论坛PCPOP - 国内领先的IT数码互动社区，提供硬件评测、软件下载、数码潮流讨论、电脑装机配置单、笔记本电脑选购指南及系统故障解决方案。">
+    <meta name="keywords" content="太平洋电脑论坛,PCPOP,电脑论坛,硬件评测,装机配置,笔记本推荐,数码资讯">
+    <title>太平洋电脑论坛-IT数码互动社区与装机配置指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #f5f5f5;
+            --text-main: #333333;
+            --text-sub: #666666;
+            --border-color: #e1e1e1;
+            --accent-color: #ff6600;
+            --spacing-unit: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: #f9f9f9;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-top {
+            background: #f0f2f5;
+            font-size: 12px;
+            color: var(--text-sub);
+            padding: 4px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        .header-main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        .search-bar {
+            display: flex;
+            flex: 1;
+            max-width: 500px;
+            margin: 0 20px;
+            border: 1px solid var(--primary-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .search-bar input {
+            flex: 1;
+            border: none;
+            padding: 8px 12px;
+            outline: none;
+        }
+
+        .search-bar button {
+            background: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 0 16px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .user-actions a {
+            font-size: 14px;
+            margin-left: 15px;
+            color: var(--text-sub);
+        }
+
+        .user-actions a.highlight {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Navigation */
+        nav {
+            background: #fff;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            height: 44px;
+            align-items: center;
+        }
+
+        .nav-list li a {
+            display: block;
+            padding: 0 20px;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .nav-list li a:hover, .nav-list li a.active {
+            background: #f0f7ff;
+            color: var(--primary-color);
+        }
+
+        /* Main Layout */
+        main {
+            padding: 20px 0;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 20px;
+        }
+
+        /* Left Content */
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+            padding: 40px;
+            color: #fff;
+            position: relative;
+        }
+
+        .hero-banner h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .hero-banner p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            max-width: 80%;
+        }
+
+        .hero-banner .btn {
+            display: inline-block;
+            background: #fff;
+            color: var(--primary-color);
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .hero-sidebar {
+            background: #f8f9fa;
+            padding: 20px;
+            border-left: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-title a {
+            font-size: 12px;
+            color: var(--text-sub);
+            font-weight: normal;
+        }
+
+        /* Forum Threads List */
+        .forum-list {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .thread-item {
+            display: flex;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+            align-items: center;
+        }
+
+        .thread-item:last-child {
+            border-bottom: none;
+        }
+
+        .thread-icon {
+            width: 40px;
+            height: 40px;
+            background: #eef4ff;
+            color: var(--primary-color);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .thread-info {
+            flex: 1;
+        }
+
+        .thread-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-main);
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .thread-meta {
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+
+        .thread-meta span {
+            margin-right: 10px;
+        }
+
+        .thread-stats {
+            text-align: right;
+            font-size: 12px;
+            color: var(--text-sub);
+            min-width: 80px;
+        }
+
+        .thread-stats strong {
+            display: block;
+            font-size: 16px;
+            color: var(--text-main);
+        }
+
+        /* Modules Grid */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .module-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .module-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .module-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .module-name {
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .module-desc {
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+
+        /* Sidebar */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .widget {
+            background: #fff;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .hot-list {
+            list-style: none;
+        }
+
+        .hot-list li {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .hot-list li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .hot-list li a {
+            font-size: 14px;
+            color: var(--text-main);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .hot-list li .rank {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .rank-1 { color: #ff4d4f; }
+        .rank-2 { color: #faad14; }
+        .rank-3 { color: #52c41a; }
+
+        .ad-placeholder {
+            width: 100%;
+            height: 250px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: #2b2b2b;
+            color: #ccc;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            font-size: 14px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .grid-layout {
+                grid-template-columns: 1fr;
+            }
+            .hero-section {
+                grid-template-columns: 1fr;
+            }
+            .hero-sidebar {
+                border-left: none;
+                border-top: 1px solid var(--border-color);
+                padding: 20px;
+            }
+            .modules-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .search-bar {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-list {
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .thread-stats {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-top">
+        <div class="container" style="display: flex; justify-content: space-between;">
+            <span>欢迎访问太平洋电脑论坛 PCPOP</span>
+            <span>服务热线：400-123-4567</span>
+        </div>
+    </div>
+    <div class="container header-main">
+        <a href="#" class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 17l6-6-6-6M12 19h8"/>
+            </svg>
+            <span>太平洋电脑论坛</span>
+        </a>
+        <div class="search-bar">
+            <input type="text" placeholder="搜索硬件、配置、软件、帖子...">
+            <button>搜索</button>
+        </div>
+        <div class="user-actions">
+            <a href="#" class="highlight">登录</a>
+            <a href="#">注册</a>
+            <a href="#">我的收藏</a>
+        </div>
+    </div>
+</header>
+
+<nav>
+    <div class="container">
+        <ul class="nav-list">
+            <li><a href="#" class="active">首页</a></li>
+            <li><a href="#">电脑硬件</a></li>
+            <li><a href="#">笔记本专区</a></li>
+            <li><a href="#">手机数码</a></li>
+            <li><a href="#">装机配置</a></li>
+            <li><a href="#">软件下载</a></li>
+            <li><a href="#">DIY外设</a></li>
+            <li><a href="#">二手交易</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main class="container">
+    <div class="grid-layout">
+        <!-- Left Content -->
+        <div class="content-area">
+            <!-- Hero Banner -->
+            <section class="hero-section">
+                <div class="hero-banner">
+                    <h2>2024年最新硬件趋势解析</h2>
+                    <p>深入探讨NVIDIA RTX 50系列显卡架构，解析AI算力需求对PC硬件的影响，为您提供专业的选购建议。</p>
+                    <a href="#" class="btn">阅读专题报告</a>
+                </div>
+                <div class="hero-sidebar">
+                    <div class="section-title">
+                        <span>热门推荐</span>
+                    </div>
+                    <div class="module-card" style="padding: 10px; background: #fff; color: #333; text-align: left; display: flex; align-items: center; gap: 10px;">
+                        <div style="font-size: 24px;">💻</div>
+                        <div>
+                            <div style="font-weight: bold; font-size: 14px;">装机配置单</div>
+                            <div style="font-size: 12px; color: #666;">万元级游戏主机推荐</div>
+                        </div>
+                    </div>
+                    <div class="module-card" style="padding: 10px; background: #fff; color: #333; text-align: left; display: flex; align-items: center; gap: 10px;">
+                        <div style="font-size: 24px;">📱</div>
+                        <div>
+                            <div style="font-weight: bold; font-size: 14px;">手机评测</div>
+                            <div style="font-size: 12px; color: #666;">2024旗舰机横向对比</div>
+                        </div>
+                    </div>
+                    <div class="module-card" style="padding: 10px; background: #fff; color: #333; text-align: left; display: flex; align-items: center; gap: 10px;">
+                        <div style="font-size: 24px;">🔧</div>
+                        <div>
+                            <div style="font-weight: bold; font-size: 14px;">系统维护</div>
+                            <div style="font-size: 12px; color: #666;">Win11系统优化技巧</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Main Forum List -->
+            <section class="forum-list">
+                <div class="section-title">
+                    <span>最新讨论</span>
+                    <a href="#">查看更多 &gt;</a>
+                </div>
+                
+                <article class="thread-item">
+                    <div class="thread-icon">🖥️</div>
+                    <div class="thread-info">
+                        <a href="#" class="thread-title">【求助】新买的4080 Super显卡在3DMark测试中跑分异常低，求助大神分析原因</a>
+                        <div class="thread-meta">
+                            <span>发布于：硬件讨论区</span>
+                            <span>作者：硬件小白</span>
+                            <span>浏览：1,204</span>
+                        </div>
+                    </div>
+                    <div class="thread-stats">
+                        <strong>45</strong>
+                        回复
+                    </div>
+                </article>
+
+                <article class="thread-item">
+                    <div class="thread-icon">💻</div>
+                    <div class="thread-info">
+                        <a href="#" class="thread-title">【晒单】我的2024年游戏主机装机作业，全白海景房，性能释放拉满</a>
+                        <div class="thread-meta">
+                            <span>发布于：DIY装机区</span>
+                            <span>作者：极客装机师</span>
+                            <span>浏览：8,562</span>
+                        </div>
+                    </div>
+                    <div class="thread-stats">
+                        <strong>128</strong>
+                        回复
+                    </div>
+                </article>
+
+                <article class="thread-item">
+                    <div class="thread-icon">🔋</div>
+                    <div class="thread-info">
+                        <a href="#" class="thread-title">笔记本电脑选购指南：2024年有哪些值得入手的轻薄本？</a>
+                        <div class="thread-meta">
+                            <span>发布于：笔记本专区</span>
+                            <span>作者：太平洋评测室</span>
+                            <span>浏览：12,304</span>
+                        </div>
+                    </div>
+                    <div class="thread-stats">
+                        <strong>89</strong>
+                        回复
+                    </div>
+                </article>
+
+                <article class="thread-item">
+                    <div class="thread-icon">🎮</div>
+                    <div class="thread-info">
+                        <a href="#" class="thread-title">Steam Deck OLED版上手体验：掌机游戏的未来形态？</a>
+                        <div class="thread-meta">
+                            <span>发布于：游戏外设</span>
+                            <span>作者：游戏狂人</span>
+                            <span>浏览：5,621</span>
+                        </div>
+                    </div>
+                    <div class="thread-stats">
+                        <strong>67</strong>
+                        回复
+                    </div>
+                </article>
+
+                <article class="thread-item">
+                    <div class="thread-icon">💾</div>
+                    <div class="thread-info">
+                        <a href="#" class="thread-title">关于SSD寿命和掉速问题，大家怎么看？</a>
+                        <div class="thread-meta">
+                            <span>发布于：存储设备</span>
+                            <span>作者：数据控</span>
+                            <span>浏览：3,402</span>
+                        </div>
+                    </div>
+                    <div class="thread-stats">
+                        <strong>23</strong>
+                        回复
+                    </div>
+                </article>
+            </section>
+
+            <!-- Quick Modules -->
+            <section>
+                <div class="section-title">
+                    <span>热门板块</span>
+                </div>
+                <div class="modules-grid">
+                    <div class="module-card">
+                        <span class="module-icon">🛠️</span>
+                        <div class="module-name">装机配置</div>
+                        <div class="module-desc">高性价比装机单分享</div>
+                    </div>
+                    <div class="module-card">
+                        <span class="module-icon">🤖</span>
+                        <div class="module-name">AI工具</div>
+                        <div class="module-desc">ChatGPT与AI绘画</div>
+                    </div>
+                    <div class="module-card">
+                        <span class="module-icon">📷</span>
+                        <div class="module-name">摄影发烧友</div>
+                        <div class="module-desc">相机器材与摄影技巧</div>
+                    </div>
+                    <div class="module-card">
+                        <span class="module-icon">📺</span>
+                        <div class="module-name">智能家居</div>
+                        <div class="module-desc">全屋智能解决方案</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Right Sidebar -->
+        <aside>
+            <div class="widget">
+                <div class="section-title">
+                    <span>热门话题</span>
+                </div>
+                <ul class="hot-list">
+                    <li>
+                        <a href="#">
+                            <span>RTX 5090 显卡曝光</span>
+                            <span class="rank rank-1">1</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>苹果 WWDC 2024 开发者大会</span>
+                            <span class="rank rank-2">2</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>Windows 12 系统传闻汇总</span>
+                            <span class="rank rank-3">3</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>国产显卡崛起之路</span>
+                            <span class="rank">4</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>二手显卡价格走势分析</span>
+                            <span class="rank">5</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>平板电脑选购避坑指南</span>
+                            <span class="rank">6</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="widget">
+                <div class="section-title">
+                    <span>论坛公告</span>
+                </div>
+                <ul class="hot-list">
+                    <li><a href="#" style="color: #666; font-size: 13px;">关于规范发帖格式与打击水帖的通知</a></li>
+                    <li><a href="#" style="color: #666; font-size: 13px;">太平洋电脑论坛会员积分规则更新</a></li>
+                    <li><a href="#" style="color: #666; font-size: 13px;">诚邀版主加入，共建优质社区</a></li>
+                </ul>
+            </div>
+
+            <div class="widget">
+                <div class="section-title">
+                    <span>广告/赞助</span>
+                </div>
+                <div class="ad-placeholder">
+                    顶部Banner广告位
+                </div>
+            </div>
+        </aside>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>关于我们</h4>
+                <ul>
+                    <li><a href="#">太平洋电脑网简介</a></li>
+                    <li><a href="#">加入我们</a></li>
+                    <li><a href="#">联系方式</a></li>
+                    <li><a href="#">广告服务</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>热门频道</h4>
+                <ul>
+                    <li><a href="#">太平洋电脑网</a></li>
+                    <li><a href="#">太平洋汽车网</a></li>
+                    <li><a href="#">太平洋女性网</a></li>
+                    <li><a href="#">太平洋家居网</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>帮助中心</h4>
+                <ul>
+                    <li><a href="#">论坛版规</a></li>
+                    <li><a href="#">积分商城</a></li>
+                    <li><a href="#">意见反馈</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>关注我们</h4>
+                <ul>
+                    <li><a href="#">官方微博</a></li>
+                    <li><a href="#">微信公众号</a></li>
+                    <li><a href="#">新浪看点</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 PConline.com.cn 版权所有. 太平洋电脑论坛 PCPOP 保留所有权利。</p>
+            <p>粤ICP备09106791号 | 互联网药品信息服务资格证书 (粤)-经营性-2010-0005</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+  </html>
