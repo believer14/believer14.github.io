@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="天空套是《地下城与勇士》（DNF）中极为珍贵且经典的史诗级套装。本站提供天空套的获取方法、属性详解、外观鉴赏及版本演变历史，帮助玩家了解如何搭配装备、提升战斗力。">
+    <meta name="keywords" content="天空套, DNF, 地下城与勇士, 史诗套装, 装备搭配, DNF攻略">
+    <title>天空套-DNF史诗套装属性详解与获取指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #666666;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 头部导航 */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero 区域 */
+        .hero {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        /* 主要内容区 */
+        main {
+            padding-bottom: 60px;
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* 属性对比卡片 */
+        .attributes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .attr-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .attr-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+        }
+
+        .attr-list li {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .attr-list li:last-child {
+            border-bottom: none;
+        }
+
+        .val {
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        /* 获取方式 */
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .step-item {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .step-number {
+            background-color: var(--accent-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .step-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 版本演变 */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #ddd;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -35px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--accent-color);
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .timeline-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        /* 常见问题 */
+        .faq-item {
+            background: var(--card-bg);
+            margin-bottom: 15px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-light);
+            display: none;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 15px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--accent-color);
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            margin: 0 10px;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            color: #7f8c8d;
+            font-size: 0.85rem;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-wrapper nav {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                padding: 20px;
+            }
+
+            .nav-wrapper nav.active {
+                display: block;
+            }
+
+            .nav-wrapper nav ul {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">DNF<span>装备百科</span></a>
+            <div class="mobile-menu-btn" onclick="toggleMenu()">☰</div>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#overview">套装概览</a></li>
+                    <li><a href="#attributes">属性详解</a></li>
+                    <li><a href="#acquisition">获取方式</a></li>
+                    <li><a href="#history">演变历史</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>天空套</h1>
+            <p>DNF中最具收藏价值的史诗套装。了解其属性加成、获取途径及在游戏中的战略意义。</p>
+            <a href="#acquisition" class="cta-button">查看获取指南</a>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- 概览部分 -->
+        <section id="overview">
+            <h2 class="section-title">套装概览</h2>
+            <article class="attr-card">
+                <h3>什么是天空套？</h3>
+                <p>天空套，即“天空之刃”或“天空之翼”系列史诗套装，是《地下城与勇士》（DNF）中极为珍贵且经典的史诗级套装。自游戏早期版本推出以来，它一直是玩家追求的顶级外观与属性象征。不同于普通史诗装备，天空套通常具有独特的视觉特效、动态效果以及游戏内极为稀缺的属性加成，是高端玩家实力的直观体现。</p>
+            </article>
+        </section>
+
+        <!-- 属性详解 -->
+        <section id="attributes">
+            <h2 class="section-title">属性详解</h2>
+            <div class="attributes-grid">
+                <div class="attr-card">
+                    <h3>基础属性</h3>
+                    <ul class="attr-list">
+                        <li><span>力量/智力</span><span class="val">+35</span></li>
+                        <li><span>体力/精神</span><span class="val">+35</span></li>
+                        <li><span>物理/魔法攻击力</span><span class="val">+8%</span></li>
+                        <li><span>独立攻击力</span><span class="val">+100</span></li>
+                    </ul>
+                </div>
+                <div class="attr-card">
+                    <h3>套装效果</h3>
+                    <ul class="attr-list">
+                        <li><span>2件套</span><span class="val">攻击速度+5%</span></li>
+                        <li><span>4件套</span><span class="val">移动速度+5%</span></li>
+                        <li><span>6件套</span><span class="val">施放速度+5%</span></li>
+                        <li><span>8件套</span><span class="val">攻击时几率增加10%暴击率</span></li>
+                    </ul>
+                </div>
+                <div class="attr-card">
+                    <h3>外观特效</h3>
+                    <ul class="attr-list">
+                        <li><span>动态翅膀</span><span class="val">全职业通用</span></li>
+                        <li><span>技能特效</span><span class="val">释放技能时光效</span></li>
+                        <li><span>入场特效</span><span class="val">地下城入场动画</span></li>
+                        <li><span>称号</span><span class="val">永久增加属性</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 获取方式 -->
+        <section id="acquisition">
+            <h2 class="section-title">获取方式</h2>
+            <div class="steps-container">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>参与活动与抽奖</h3>
+                        <p>早期版本中，天空套主要通过参与官方举办的抽奖活动获得。玩家需要消耗特定的道具（如“天空之翼”兑换券或抽奖券）进行抽奖，概率极低，具有极强的随机性。</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>分解稀有装扮</h3>
+                        <p>在部分版本中，分解稀有装扮（如稀有时装）有几率获得“天空之刃”材料，积累足够材料后可在商城兑换整套装备。</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>商城购买（礼包）</h3>
+                        <p>官方通常会推出“天空套礼包”，玩家可以通过充值或使用点券直接购买。这是目前最主流的获取方式，通常包含外观、属性以及一些游戏道具。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 演变历史 -->
+        <section id="history">
+            <h2 class="section-title">演变历史</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2008年 - 早期版本</div>
+                    <div class="timeline-content">
+                        <h4>初代天空套</h4>
+                        <p>随着游戏早期“天空之翼”活动的开启，天空套首次进入玩家视野，成为当时最顶级的追求。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2010年 - 色彩革新</div>
+                    <div class="timeline-content">
+                        <h4>多彩天空</h4>
+                        <p>推出了红、蓝、紫、绿、粉等多种颜色的天空套，满足了玩家个性化装扮的需求，丰富了游戏视觉。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2016年 - 龙袍时代</div>
+                    <div class="timeline-content">
+                        <h4>龙袍与史诗天空</h4>
+                        <p>随着“史诗级装备”系统的普及，天空套也进行了史诗化改版，增加了更高的属性和更精致的外观，同时“龙袍”等特殊外观套装同期推出。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 常见问题 -->
+        <section id="faq">
+            <h2 class="section-title">常见问题</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">天空套和史诗套装有什么区别？<span>+</span></div>
+                <div class="faq-answer">
+                    <p>天空套属于稀有装扮的一种特殊形态，除了提供基础属性外，还拥有独特的套装效果（如速度加成）和极其炫酷的外观特效。而普通的史诗装备则主要提供数值属性的提升，外观相对普通。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">天空套可以跨界吗？<span>+</span></div>
+                <div class="faq-answer">
+                    <p>绝大多数版本中的天空套支持跨界功能，但通常需要消耗特定的跨界石，并且部分特殊外观套装可能存在限制。建议在购买或获取前查阅当前版本的跨界规则。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">现在的天空套还值得入手吗？<span>+</span></div>
+                <div class="faq-answer">
+                    <p>天空套在游戏内依然具有极高的收藏价值和属性加成。虽然游戏后期装备成型后，基础属性的提升相对微弱，但其外观特效、称号属性以及社交属性依然是许多玩家追求的目标。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">关于我们</a>
+                <a href="#">玩家社区</a>
+                <a href="#">装备数据库</a>
+                <a href="#">联系合作</a>
+            </div>
+            <p class="copyright">© 2023 DNF装备百科 - 非官方玩家社区 | 本站内容仅供参考，不涉及商业利益</p>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        function toggleMenu() {
+            const nav = document.getElementById('main-nav');
+            nav.classList.toggle('active');
+        }
+
+        // FAQ 折叠切换
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            item.classList.toggle('active');
+            
+            // 切换图标
+            const span = element.querySelector('span');
+            span.textContent = item.classList.contains('active') ? '-' : '+';
+        }
+
+        // 简单的平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement){
+                    // 关闭移动端菜单
+                    document.getElementById('main-nav').classList.remove('active');
+                    
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+                                                                       </html>
